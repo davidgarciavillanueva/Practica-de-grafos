@@ -35,4 +35,10 @@ class GraphList:
         peso = self._calcular_peso(distancia, costo_combustible)
 
     
-    
+    def _calcular_peso(self, distancia, costo_combustible):
+        """Calcula el peso basado en distancia y combustible"""
+        galones = distancia / 10
+        return galones * costo_combustible
+
+
+   
