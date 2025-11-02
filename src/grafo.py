@@ -21,6 +21,15 @@ class GraphList:
             self.agregar_nodo(vertex_1)
         if vertex_2 not in self.adj_list:
             self.agregar_nodo(vertex_2)
+
+        # Agregar arista
+        if vertex_2 not in self.adj_list[vertex_1]:
+            self.adj_list[vertex_1].append(vertex_2)
+            self.pesos[(vertex_1, vertex_2)] = peso
+
+        if not self.dirigido and vertex_1 not in self.adj_list[vertex_2]:
+            self.adj_list[vertex_2].append(vertex_1)
+            self.pesos[(vertex_2, vertex_1)] = peso
         
          # Calcular peso
         peso = self._calcular_peso(distancia, costo_combustible)
