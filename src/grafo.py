@@ -41,4 +41,15 @@ class GraphList:
         return galones * costo_combustible
 
 
-   
+    def obtener_vecinos(self, vertex):
+        """Retorna lista de (vecino, peso)"""
+        vecinos = []
+        for neighbor in self.adj_list[vertex]:
+            peso = self.pesos.get((vertex, neighbor), float('inf'))
+            vecinos.append((neighbor, peso))
+        return vecinos
+
+
+    def obtener_peso(self, vertex_1, vertex_2):
+        """Obtiene el peso entre dos nodos"""
+        return self.pesos.get((vertex_1, vertex_2), float('inf'))
