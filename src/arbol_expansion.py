@@ -38,3 +38,16 @@ class UnionFind:
         uf = UnionFind(len(nodos))
         arbol_expansion = []
         costo_total = 0
+
+        for arista in aristas_ordenadas:
+            if len(arbol_expansion) == len(nodos) - 1:
+                break
+
+            origen_idx = nodo_a_indice[arista['origen']]
+            destino_idx = nodo_a_indice[arista['destino']]
+
+            if uf.union(origen_idx, destino_idx):
+                arbol_expansion.append(arista)
+                costo_total += arista['peso']
+
+        return arbol_expansion, costo_total
