@@ -51,3 +51,33 @@ class UnionFind:
                 costo_total += arista['peso']
 
         return arbol_expansion, costo_total
+
+    def prim(grafo, nodo_inicial):
+        """Algoritmo de Prim para árbol de expansión mínimo."""
+        nodos = grafo.obtener_nodos()
+        visitados = set()
+        arbol_expansion = []
+        costo_total = 0
+        heap = [(0, nodo_inicial, nodo_inicial)]  # (peso, origen, destino)
+
+        while heap and len(visitados) < len(nodos):
+            peso, origen, actual = heapq.heappop(heap)
+
+            if actual in visitados:
+                continue
+
+            visitados.add(actual)
+
+            if origen != actual:  # Evitar la arista inicial ficticia
+                arbol_expansion.append({
+                    'origen': origen,
+                    'destino': actual,
+                    'peso': peso
+                })
+                costo_total += peso
+
+            for vecino, peso_arista in grafo.obtener_vecinos(actual):
+                if vecino not in visitados:
+                    heapq.heappush(heap, (peso_arista, actual, vecino))
+
+        return arbol_expansion, costo_total
