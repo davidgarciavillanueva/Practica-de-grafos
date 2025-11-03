@@ -76,3 +76,7 @@ class GraphList:
                         'peso': self.pesos[(origen, destino)]
                     })
         return aristas
+
+    def obtener_info_nodo(self, vertex):
+        """Retorna la información de un nodo"""
+        return self.info_nodos.get(vertex, {})
