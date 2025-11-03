@@ -53,3 +53,26 @@ class GraphList:
     def obtener_peso(self, vertex_1, vertex_2):
         """Obtiene el peso entre dos nodos"""
         return self.pesos.get((vertex_1, vertex_2), float('inf'))
+
+    def obtener_nodos(self):
+        """Retorna todos los nodos del grafo"""
+        return list(self.adj_list.keys())
+
+    def obtener_aristas(self):
+        """Retorna todas las aristas con su información"""
+        aristas = []
+        for origen in self.adj_list:
+            for destino in self.adj_list[origen]:
+                if not self.dirigido and origen < destino:
+                    aristas.append({
+                        'origen': origen,
+                        'destino': destino,
+                        'peso': self.pesos[(origen, destino)]
+                    })
+                elif self.dirigido:
+                    aristas.append({
+                        'origen': origen,
+                        'destino': destino,
+                        'peso': self.pesos[(origen, destino)]
+                    })
+        return aristas
