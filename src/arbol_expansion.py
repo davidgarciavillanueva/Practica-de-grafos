@@ -1,4 +1,3 @@
-import heapq
 
 class UnionFind:
     """Estructura para manejar conjuntos disjuntos"""
