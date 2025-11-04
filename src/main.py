@@ -1,5 +1,5 @@
 from grafo import GraphList
-from arbol_expansion import kruskal
+from arbol_expansion import UnionFind
 from backtracking import OptimizadorRutas
 
 def main(): 
@@ -38,7 +38,7 @@ def main():
     print(f"📊 {grafo.size} sedes: {grafo.obtener_nodos()}\n")
 
     print("1. ÁRBOL DE EXPANSIÓN MÍNIMO (Kruskal):")
-    arbol_kruskal, costo_kruskal = kruskal(grafo)
+    arbol_kruskal, costo_kruskal = UnionFind.kruskal(grafo)
     print(f"   Costo total: ${costo_kruskal:.2f}")
     print("   Rutas esenciales:")
     for arista in arbol_kruskal:
