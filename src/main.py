@@ -33,3 +33,6 @@ def main():
     
     for origen, destino, distancia, costo_combustible in rutas:
         grafo.agregar_arista(origen, destino, distancia, costo_combustible)
+
+    print("✅ Grafo creado correctamente")
+    print(f"📊 {grafo.size} sedes: {grafo.obtener_nodos()}\n")
