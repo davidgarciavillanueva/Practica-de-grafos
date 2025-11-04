@@ -36,3 +36,53 @@ def main():
 
     print("✅ Grafo creado correctamente")
     print(f"📊 {grafo.size} sedes: {grafo.obtener_nodos()}\n")
+
+    print("1. ÁRBOL DE EXPANSIÓN MÍNIMO (Kruskal):")
+    arbol_kruskal, costo_kruskal = kruskal(grafo)
+    print(f"   Costo total: ${costo_kruskal:.2f}")
+    print("   Rutas esenciales:")
+    for arista in arbol_kruskal:
+        info_origen = grafo.obtener_info_nodo(arista['origen'])
+        info_destino = grafo.obtener_info_nodo(arista['destino'])
+        print(f"     {arista['origen']} -> {arista['destino']}: ${arista['peso']:.2f}")
+    print()
+
+    # ==================== BACKTRACKING ITERATIVO - RUTA ÓPTIMA ====================
+    print("2. BACKTRACKING ITERATIVO - RUTA ÓPTIMA:")
+    optimizador = OptimizadorRutas(grafo)
+    ruta_optima, costo_optimo = optimizador.encontrar_ruta_optima('A')
+
+    print(f"   Ruta encontrada: {' -> '.join(ruta_optima)}")
+    print(f"   Costo total: ${costo_optimo:.2f}")
+
+    # Mostrar detalles del recorrido
+    print("\n   Detalle del recorrido:")
+    for i in range(len(ruta_optima) - 1):
+        origen = ruta_optima[i]
+        destino = ruta_optima[i + 1]
+        peso = grafo.obtener_peso(origen, destino)
+        info_origen = grafo.obtener_info_nodo(origen)
+        info_destino = grafo.obtener_info_nodo(destino)
+        print(f"     {origen} -> {destino}: ${peso:.2f}")
+    print()
+
+    # ==================== ANÁLISIS DE RESULTADOS ====================
+    print("3. ANÁLISIS:")
+    print(f"   • Sedes conectadas: {grafo.size}")
+    print(f"   • Costo infraestructura mínima: ${costo_kruskal:.2f}")
+    print(f"   • Costo ruta diaria óptima: ${costo_optimo:.2f}")
+
+    # Calcular ahorro vs conectar todas las rutas
+    costo_total_todas_rutas = sum(arista['peso'] for arista in grafo.obtener_aristas())
+    ahorro = costo_total_todas_rutas - costo_kruskal
+    print(f"   • Ahorro vs conectar todo: ${ahorro:.2f}\n")
+
+    # ==================== EXPLICACIÓN DE ALGORITMOS ====================
+    print("4. EXPLICACIÓN DE ALGORITMOS:")
+    print("   • GraphList: Modela el grafo con lista de adyacencia")
+    print("   • Kruskal: Encuentra conexión mínima entre todas las sedes")
+    print("   • Backtracking Iterativo: Encuentra ruta óptima usando pila")
+    print("   • Los algoritmos garantizan soluciones óptimas")
+
+if __name__ == "__main__":
+    main()
