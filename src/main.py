@@ -16,7 +16,7 @@ def main():
     grafo.agregar_nodo('A')
     grafo.agregar_nodo('B')
     grafo.agregar_nodo('C')
-    grafo.agregar_nodo('D')
+    grafo.agregar_nodo('D')   #Se crean los nodos
     grafo.agregar_nodo('E')
     grafo.agregar_nodo('F')
     
@@ -25,7 +25,7 @@ def main():
         ('A', 'B', 17, 3.5),   # Formato: (origen, destino, distancia_km, costo_combustible)
         ('A', 'C', 60, 3.5),
         ('A', 'D', 28, 3.5),
-        ('B', 'C', 92, 3.5),
+        ('B', 'C', 92, 3.5), #Se crean las rutas 
         ('B', 'E', 9, 3.5),
         ('C', 'D', 75, 3.5),
         ('C', 'E', 22, 3.5),
