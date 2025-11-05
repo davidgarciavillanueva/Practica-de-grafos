@@ -1,34 +1,60 @@
-# Practica-de-grafos
+# 🚚 Optimización de Rutas de Entrega
 
+## 📘 Descripción del proyecto
+Este proyecto implementa un sistema para optimizar rutas de entrega entre diferentes sedes de una empresa, utilizando **estructuras de grafos** y **algoritmos clásicos de optimización**.  
 
-Optimización de Rutas de Entrega
-Descripción del Escenario:
-Una empresa de comidas tiene varias sedes (nodos) alrededor de la ciudad y rutas que las conectan (aristas). Todos los días antes de abrir las sedes, debe llevar a cada una de ellas la materia prima para que puedan operar con normalidad.  El objetivo es encontrar la ruta más eficiente para entregar los paquetes minimizando el costo total de transporte (considera como mínimo aspectos como el valor del galón de Diesel y la distancia) y asegurando que se visiten todos los puntos de entrega.
-Objetivos del Ejercicio:
-Modelar el problema utilizando grafos. Se deben tener al menos 5 sedes y caminos entre ellas.
-Aplicar el algoritmo de árbol de expansión mínimo para determinar la ruta más económica.
-Utilizar técnicas de backtracking para explorar diferentes combinaciones de rutas y optimizar la entrega.
-Entregables
-1.	Repositorio en Github con Código fuente completo: Se revisará el aporte individual de cada miembro del equipo.
-2.	README.md que contenga:
-o	Descripción del proyecto
-o	Cómo ejecutar el proyecto
-o	Supuestos asumidos
-3.	Entregar el enlace al repositorio en la Tarea de Uvirtual, se debe cargar el link del repo antes del 05 de noviembre a las 06:00 am, de igual forma solo se tendrán en cuenta commits hasta esa fecha y hora
+El sistema modela las sedes como **nodos** y las rutas entre ellas como **aristas** ponderadas según su costo o distancia.  
+Se aplican dos algoritmos principales:
 
-Trabajo en equipo
-•	Puede trabajarse individual o en parejas.
-•	Cada integrante debe participar en el desarrollo de la solución vía repositorio y debe hacer sustentación para demostrar su conocimiento del código.
-•	Tiempo para explicar la solución: 10 mins
+1. **Kruskal (Árbol de Expansión Mínimo)**  
+   Encuentra la forma más económica de conectar todas las sedes minimizando el costo total de infraestructura (por ejemplo, carreteras o conexiones de transporte).
 
+2. **Backtracking Iterativo (Ruta Óptima)**  
+   Calcula una ruta completa que recorra todas las sedes y regrese al punto inicial, buscando el costo total más bajo posible.  
+   Este proceso simula la optimización de una ruta diaria de distribución.
 
+El programa finalmente muestra un análisis comparativo entre:
+- El costo mínimo de conexión (Kruskal),
+- El costo de la mejor ruta de entrega (Backtracking),
+- Y el ahorro obtenido frente a conectar todas las rutas posibles.
 
-Rúbrica de evaluación
-Criterio	Descripción	Peso
-Sustentación (65%)		
-Adición / modificación práctica	Cambio en la implementación presentada	30%
-Explicación solución	Explica la implementación presentada y la adición / modificación práctica	35%
-Implementación (35%)		
-Modelado del grafo	El grafo representa la situación dada y el grafo está correctamente modelado con nodos y aristas, incluyendo pesos.	10%
-Uso de árbol de expansión mínimo	Se aplica correctamente el algoritmo, mostrando el costo mínimo y la ruta óptima.	15%
-Uso de backtracking	Se utiliza backtracking de manera efectiva para explorar rutas alternativas y optimizar la entrega	10%
+---
+
+##  Cómo ejecutar el proyecto
+
+### 1️⃣ Requisitos previos
+- Tener instalado **Python 3.10+**
+- Tener los archivos del proyecto organizados en una estructura como esta:
+
+  ```plaintext
+  Practica-de-grafos/
+  ├── src/
+  │   ├── main.py
+  │   ├── grafo.py
+  │   ├── arbol_expansion.py
+  │   └── backtracking.py
+
+### 2️⃣ Ejecución
+
+1. Abre una terminal o consola en la carpeta del proyecto (`src` o el directorio raíz).
+
+2. Ejecuta el siguiente comando:
+
+   ```bash
+   python src/main.py
+
+El programa mostrará en consola:
+
+- El grafo creado con todas las sedes.  
+- Las rutas esenciales del **Árbol de Expansión Mínimo (Kruskal)**.  
+- La **Ruta Óptima** generada por el algoritmo de **Backtracking**.  
+- Un resumen del análisis de costos y ahorro obtenido.  
+
+##  Supuestos asumidos
+
+- El grafo es **no dirigido**, es decir, las rutas son bidireccionales (A → B equivale a B → A).  
+- Los costos o distancias entre sedes son **simétricos** (el costo de ir y volver es el mismo).  
+- No existen rutas negativas ni nulas.  
+- Todos los nodos (sedes) están conectados al menos indirectamente.  
+- El algoritmo de **Backtracking** busca la mejor ruta completa partiendo desde una sede inicial (por defecto, la sede ‘A’).  
+- El modelo no considera variables externas como tráfico, clima o restricciones horarias; se enfoca únicamente en **distancia y costo**.  
