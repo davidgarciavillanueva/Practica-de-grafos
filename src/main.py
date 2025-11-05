@@ -1,6 +1,6 @@
 
 from grafo import GraphList
-from arbol_expansion import UnionFind
+from arbol_expansion import kruskal
 from backtracking import OptimizadorRutas
 
 def main(): 
@@ -36,22 +36,22 @@ def main():
     for origen, destino, distancia, costo_combustible in rutas:
         grafo.agregar_arista(origen, destino, distancia, costo_combustible)
     
-    
+    print("✅ Grafo creado correctamente")
     print(f"📊 {grafo.size} sedes: {grafo.obtener_nodos()}")
     print()
     
     # ==================== ÁRBOL DE EXPANSIÓN MÍNIMO ====================
     print("1. ÁRBOL DE EXPANSIÓN MÍNIMO (Kruskal):")
-    arbol_kruskal, costo_kruskal = UnionFind.kruskal(grafo)
+    arbol_kruskal, costo_kruskal = kruskal(grafo)
     print(f"   Costo total: ${costo_kruskal:.2f}")
     print("   Rutas esenciales:")
     for arista in arbol_kruskal:
-    
+        
         print(f"     {arista['origen']} -> {arista['destino']}: ${arista['peso']:.2f}")
     print()
     
     # ==================== BACKTRACKING ITERATIVO - RUTA ÓPTIMA ====================
-    print("2. BACKTRACKING  - RUTA ÓPTIMA:")
+    print("2. BACKTRACKING ITERATIVO - RUTA ÓPTIMA:")
     optimizador = OptimizadorRutas(grafo)
     ruta_optima, costo_optimo = optimizador.encontrar_ruta_optima('A')
     
@@ -64,7 +64,7 @@ def main():
         origen = ruta_optima[i]
         destino = ruta_optima[i + 1]
         peso = grafo.obtener_peso(origen, destino)
-     
+        
         print(f"     {origen} -> {destino}: ${peso:.2f}")
     print()
     
@@ -81,7 +81,6 @@ def main():
     print("   • Kruskal: Encuentra conexión mínima entre todas las sedes")
     print("   • Backtracking Iterativo: Encuentra ruta óptima usando pila")
 
+
 if __name__ == "__main__":
     main()
-
-
