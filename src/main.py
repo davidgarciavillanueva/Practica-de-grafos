@@ -46,7 +46,7 @@ def main():
     print(f"   Costo total: ${costo_kruskal:.2f}")
     print("   Rutas esenciales:")
     for arista in arbol_kruskal:
-        # Solo IDs, sin información descriptiva
+    
         print(f"     {arista['origen']} -> {arista['destino']}: ${arista['peso']:.2f}")
     print()
     
@@ -64,7 +64,7 @@ def main():
         origen = ruta_optima[i]
         destino = ruta_optima[i + 1]
         peso = grafo.obtener_peso(origen, destino)
-        # Solo IDs, sin información descriptiva
+     
         print(f"     {origen} -> {destino}: ${peso:.2f}")
     print()
     
@@ -73,19 +73,14 @@ def main():
     print(f"   • Sedes conectadas: {grafo.size}")
     print(f"   • Costo infraestructura mínima: ${costo_kruskal:.2f}")
     print(f"   • Costo ruta diaria óptima: ${costo_optimo:.2f}")
-    
-    # Calcular ahorro vs conectar todas las rutas
-    costo_total_todas_rutas = sum(arista['peso'] for arista in grafo.obtener_aristas())
-    ahorro = costo_total_todas_rutas - costo_kruskal
-    print(f"   • Ahorro vs conectar todo: ${ahorro:.2f}")
-    print()
+
     
     # ==================== EXPLICACIÓN DE ALGORITMOS ====================
     print("4. EXPLICACIÓN DE ALGORITMOS:")
     print("   • GraphList: Modela el grafo con lista de adyacencia")
     print("   • Kruskal: Encuentra conexión mínima entre todas las sedes")
     print("   • Backtracking Iterativo: Encuentra ruta óptima usando pila")
-    print("   • Los algoritmos funcionan solo con IDs, sin información adicional")
 
 if __name__ == "__main__":
     main()
+
